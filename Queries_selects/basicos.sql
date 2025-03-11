@@ -14,6 +14,7 @@ ORDER BY campo1 [ASC | DESC], campo2 [ASC | DESC];
 
 -- Clase 1 query
 
+
 USE sakila;
 
 -- Para mostrar todos los registros de la tabla “Actor” 
