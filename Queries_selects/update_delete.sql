@@ -225,4 +225,4 @@ SELECT * FROM productos2 WHERE categoria = 'Muebles';
 
 DELETE FROM productos2;
 
-SELECT * FROM productos2;
+SELECT * FROM productos2;   
