@@ -45,7 +45,8 @@ INSERT INTO departamento (descripcion, ubicacion) VALUES
 ('Muebles', 'Piso 7'),
 ('Accesorios', 'Piso 8'),
 ('Libros', 'Piso 9'),
-('Zapatería', 'Piso 10');
+('Zapatería', 'Piso 10'),
+('Otro jsjs', 'Piso 11');
 
 -- Datos únicos para vendedor
 INSERT INTO vendedor (nombre, rfc, teléfono, correo, salario, direccion) VALUES
