@@ -1,91 +1,112 @@
-# 📚 Clase_Base_Datos
+# Clase_Base_Datos
 
-Este repositorio contiene ejercicios prácticos y consultas SQL diseñadas para reforzar conceptos fundamentales de bases de datos relacionales. Utiliza principalmente la base de datos de ejemplo **Sakila**, y está organizado para facilitar el aprendizaje progresivo de SQL, incluyendo subconsultas, joins, procedimientos almacenados y más.
+Repositorio con ejercicios y recursos prácticos para aprender y trabajar con bases de datos SQL, incluyendo la base de datos Sakila y consultas de ejemplo.
 
-## 🗂️ Estructura del Proyecto
+---
 
-```
-Clase_Base_Datos/
-├── base_de_datos_sakila.sql
-├── bases_de_datos/
-│   ├── joins/
-│   │   ├── join_departamento.sql
-│   │   ├── join_escuela.sql
-│   │   ├── join_juego.sql
-│   │   ├── join_liga_futbol.sql
-│   │   ├── joins_complejos/
-│   │   │   └── join_07_05_25.sql
-│   │   └── tablas/
-│   │       ├── departamento.sql
-│   │       ├── escuela.sql
-│   │       ├── juego.sql
-│   │       └── liga_futbol.sql
-│
-│   ├── ejercicios/
-│   │   ├── empleados_salario_superior_5000.sql
-│   │   ├── mayor_vendido.sql
-│   │   └── promedio_mayor_85.sql
-│
-│   ├── queries_selects/
-│   │   └── actividad_26.sql
-│
-│   ├── stored_procedures/
-│   │   └── procedimientos_almacenados.sql
-│
-│   ├── subqueries/
-│   │   ├── basicos/
-│   │   │   ├── subqueries_departamentos.sql
-│   │   │   ├── subqueries_escuela.sql
-│   │   │   ├── subqueries_juego.sql
-│   │   │   └── subqueries_liga_de_futbol.sql
-│   │   ├── avanzados/
-│   │   │   ├── group_by.sql
-│   │   │   ├── group_by_having.sql
-│   │   │   ├── order.sql
-│   │   │   ├── update_delete.sql
-│   │   │   └── where.sql
-│   │   ├── actividades/
-│   │   │   ├── actividad_22.sql
-│   │   │   ├── actividad_08_04_25.sql
-│   │   │   └── andornot.sql
-│   │   └── otros/
-│   │       ├── case.sql
-│   │       ├── ifnull.sql
-│   │       ├── omat.sql
-│   │       └── modificadores.sql
-│
-└── python/  # Carpeta vacía por ahora, destinada a futuros scripts
-```
+## 📂 Estructura del repositorio
 
-## 🚀 Cómo Empezar
+- `data/`  
+  Archivos SQL con bases de datos o datos de ejemplo (por ejemplo, `sakila.sql`).
 
-1. **Clona el repositorio:**
+- `src/`  
+  Consultas SQL y scripts organizados por temas o tablas.
+
+- `docs/`  
+  Documentación y manuales de uso.
+
+- `tests/`  
+  Scripts para probar consultas o validar resultados.
+
+---
+
+## 🛠️ Cómo usar este repositorio
+
+1. Clona el repositorio:
 
    ```bash
    git clone https://github.com/SergioAlonsoGarcia/Clase_Base_Datos.git
-   ```
+   cd Clase_Base_Datos
+Importa la base de datos Sakila (u otra base de datos en data/) en tu servidor MySQL:
 
-2. **Importa la base de datos Sakila:**
+bash
+Copiar
+Editar
+mysql -u tu_usuario -p < data/sakila.sql
+Ejecuta consultas de ejemplo desde la carpeta src. Por ejemplo, para listar todos los clientes:
 
-   - Utiliza tu herramienta de gestión de bases de datos preferida (como MySQL Workbench o HeidiSQL) para importar el archivo `base_de_datos_sakila.sql`.
+sql
+Copiar
+Editar
+-- src/listar_clientes.sql
+SELECT customer_id, first_name, last_name, email
+FROM customer
+ORDER BY last_name;
+Si quieres probar consultas, puedes usar los scripts en la carpeta tests.
 
-3. **Explora los ejercicios:**
+📑 Ejemplos de consultas SQL
+Obtener películas por categoría
+sql
+Copiar
+Editar
+SELECT f.title, c.name AS category
+FROM film f
+JOIN film_category fc ON f.film_id = fc.film_id
+JOIN category c ON fc.category_id = c.category_id
+WHERE c.name = 'Action'
+ORDER BY f.title;
+Listar los actores con más películas
+sql
+Copiar
+Editar
+SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS peliculas
+FROM actor a
+JOIN film_actor fa ON a.actor_id = fa.actor_id
+GROUP BY a.actor_id
+ORDER BY peliculas DESC
+LIMIT 10;
+💡 Recomendaciones
+Usa un cliente SQL para ejecutar los scripts y consultas (MySQL Workbench, DBeaver, etc.).
 
-   - Navega por las carpetas para encontrar ejercicios y consultas organizadas por tema y complejidad.
+No ejecutes consultas directamente en bases de datos de producción sin pruebas previas.
 
-## 🧠 Objetivos de Aprendizaje
+Modifica y adapta las consultas a tus necesidades.
 
-- Comprender y aplicar subconsultas y joins en SQL.
-- Desarrollar y utilizar procedimientos almacenados.
-- Realizar operaciones avanzadas como agrupamientos, filtrados y modificaciones de datos.
-- Familiarizarse con la estructura y manipulación de bases de datos relacionales.
+🤝 Contribuciones
+Crea una rama nueva:
 
-## 📌 Requisitos Previos
+bash
+Copiar
+Editar
+git checkout -b nombre-de-tu-rama
+Haz tus cambios.
 
-- Conocimientos básicos de SQL.
-- Entorno de base de datos MySQL instalado.
-- Herramienta de gestión de bases de datos (opcional pero recomendado).
+Realiza un commit:
 
-## 🤝 Contribuciones
+bash
+Copiar
+Editar
+git commit -m "feat: añadir consulta para películas de acción"
+Sube la rama:
 
-Las contribuciones son bienvenidas. Si deseas mejorar o ampliar los ejercicios, por favor, realiza un fork del repositorio y envía un pull request.
+bash
+Copiar
+Editar
+git push origin nombre-de-tu-rama
+Abre un Pull Request.
+
+
+📞 Contacto
+Puedes contactarme a través de GitHub para dudas o sugerencias.
+
+¡Gracias por usar y contribuir a este repositorio!
+
+Copiar
+Editar
+
+
+
+
+
+
+
